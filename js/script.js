@@ -1,6 +1,6 @@
 
 let btn = document.querySelector("button.btn");
-
+let message;
 
 
 btn.addEventListener('click', function() {
@@ -15,13 +15,21 @@ if(inputAge > 120 || inputAge < 0){
 }
 else if(inputAge < 18) {
     prezzoScontato = risultato - (0.194 * risultato);
-    console.log(prezzoScontato.toFixed(2) + " €");
+    console.log(prezzoScontato + " €");
+    message = "è stato applicato lo sconto del 19.4% per i passeggeri minorenni";
 }
-else if(inputDistance > 65) {
+else if(inputAge > 65) {
     prezzoScontato = risultato - (0.377 * risultato);
-    console.log(prezzoScontato.toFixed(2) + " €");
+    console.log(prezzoScontato + " €");
+    message = "è stato applicato lo sconto del 37.7% per i passeggeri over 65";
 }
 else{
     console.log(prezzoScontato);
+    message = "non è stato applicato lo sconto";
+    prezzoScontato = risultato;
 }
+
+document.getElementById("output").innerHTML += prezzoScontato.toFixed(2) + "€ " + message;
+
 });
+
